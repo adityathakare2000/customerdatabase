@@ -1,0 +1,84 @@
+while True:
+    print("Welcome to the Customer Portal")
+    print("1. Add New Customer:-")
+    print("2. Delete Customer:-")
+    print("3. Update Customer:-")
+    print("4. Search Customer:-")
+    print("5. Show Customer:-")
+    print("6. Exit")
+
+    def add():
+        cid=input("customer id:-")
+        name=input("Customer Name:-")
+        address=input("Customer Address:-")
+        contact=input("Contact Number:-")
+        
+        with open("sejal.txt","a") as file:
+            file.write(cid+"\t")
+            file.write(name+"\t")
+            file.write(address+"\t")
+            file.write(contact+"\n")
+            print("Record Added")
+
+    def delete():
+        i=input("Enter the ID to Remove from File:-")
+        with open("sejal.txt","r") as f:
+            all=f.readlines()
+        with open("sejal.txt","w") as f:
+            for data in all:
+                d=data.split("\t",1)
+                if(d[0]!=i):
+                    f.writelines(data)
+        print("Record Deleted")
+
+
+
+        
+    def show():
+        file=open("sejal.txt","r")
+        print("ID\t Name \t Address \t Contact Number")
+        content=file.read()
+        print(content)
+        file.close()
+        
+    def search():
+        i=input("Enter the ID to Search from the File:- ")
+        with open("sejal.txt","r") as file:
+            all=file.readlines()
+            for data in all:
+                d=data.split("\t",1)
+                if(d[0]==i):
+                    print(data)
+    def update():
+        i=input("Enter the ID to be Updated from File")
+        with open("sejal.txt") as file:
+            all=file.readlines()
+        with open("sejal.txt","w") as file:
+            for data in all:
+                d=data.split("\t",1)
+                if(d[0]==i):
+                    n_number=input("Enter New Name:- ")
+                    n_name=input("Enter New Address:-")
+                    n_contact=input("Enter New Contact Number:-")
+                    file.writelines(d[0]+"\t"+n_number+"\t"+n_name+"\t"+n_contact+"\n")
+                else:
+                    file.writelines(data)
+                    print("Record Updated!")
+            
+
+    ch=int(input("Enter your Choice:- "))
+
+    if ch==1:
+        add()
+    if ch==2:
+        delete()
+    if ch==3:
+        update()
+    if ch==4:
+        search()
+    if ch==5:
+        show()
+    if ch==6:
+        print("Operation Ended")
+        break
+    
