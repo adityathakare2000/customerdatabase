@@ -1,27 +1,27 @@
 while True:
-    print("Welcome to the Customer Portal")
-    print("1. Add New Customer:-")
-    print("2. Delete Customer:-")
-    print("3. Update Customer:-")
-    print("4. Search Customer:-")
-    print("5. Show Customer:-")
-    print("6. Exit")
+    print("STOCK RECORD DIRECTORY")
+    print("1. INSERT NEW PRODUCT:-")
+    print("2. DISCARD PRODUCT:-")
+    print("3. UPDATE PRODUCT:-")
+    print("4. SEARCH FOR PRODUCT:-")
+    print("5. SHOW PRODUCT:-")
+    print("6. EXIT")
 
-    def add():
-        cid=input("customer id:-")
-        name=input("Customer Name:-")
-        address=input("Customer Address:-")
-        contact=input("Contact Number:-")
+    def INSERT():
+        p_id=input("PRODUCT ID:-")
+        p_name=input("PRODUCT NAME:-")
+        p_location=input("MANUFACTURING LOCATION:-")
+        p_price=input("PRICE IN INR:-")
         
         with open("test.txt","a") as file:
-            file.write(cid+"\t")
-            file.write(name+"\t")
-            file.write(address+"\t")
-            file.write(contact+"\n")
+            file.write(p_id+"\t")
+            file.write(p_name+"\t")
+            file.write(p_location+"\t")
+            file.write(p_price+"\n")
             print("Record Added")
 
-    def delete():
-        i=input("Enter the ID to Remove from File:-")
+    def DISCARD():
+        i=input("ENTER PRODUCT ID WHICH YOU WISH TO DISCARD:-")
         with open("test.txt","r") as f:
             all=f.readlines()
         with open("test.txt","w") as f:
@@ -34,50 +34,50 @@ while True:
 
 
         
-    def show():
+    def VIEW():
         file=open("test.txt","r")
-        print("ID\t Name \t Address \t Contact Number")
+        print("PRODUCT ID\t PRODUCT NAME \t MANUFACTURING LOCATION \t PRICE IN INR")
         content=file.read()
         print(content)
         file.close()
         
-    def search():
-        i=input("Enter the ID to Search from the File:- ")
+    def LOOKUP():
+        i=input("ENTER PRODUCT ID WHICH YOU WISH TO SEARCH:- ")
         with open("test.txt","r") as file:
             all=file.readlines()
             for data in all:
                 d=data.split("\t",1)
                 if(d[0]==i):
                     print(data)
-    def update():
-        i=input("Enter the ID to be Updated from File")
+    def UPDATE():
+        i=input("ENTER PRODUCT ID WHICH YOU WISH TO UPDATE")
         with open("test.txt") as file:
             all=file.readlines()
         with open("test.txt","w") as file:
             for data in all:
                 d=data.split("\t",1)
                 if(d[0]==i):
-                    n_number=input("Enter New Name:- ")
-                    n_name=input("Enter New Address:-")
-                    n_contact=input("Enter New Contact Number:-")
+                    n_number=input("ENTER NEW PRODUCT NAME:- ")
+                    n_name=input("ENTER NEW PRODUCT MANUFACTURING LOCATION:-")
+                    n_contact=input("ENTER NEW PRICE IN INR:-")
                     file.writelines(d[0]+"\t"+n_number+"\t"+n_name+"\t"+n_contact+"\n")
                 else:
                     file.writelines(data)
-                    print("Record Updated!")
+                    print("RECORD UPDATED!")
             
 
-    ch=int(input("Enter your Choice:- "))
+    ch=int(input("ENTER YOUR CHOICE:- "))
 
     if ch==1:
-        add()
+        INSERT()
     if ch==2:
-        delete()
+        DISCARD()
     if ch==3:
-        update()
+        UPDATE()
     if ch==4:
-        search()
+        LOOKUP()
     if ch==5:
-        show()
+        VIEW()
     if ch==6:
-        print("Operation Ended")
+        print("OPERATION ENDED SUCESSFULLY!")
         break
