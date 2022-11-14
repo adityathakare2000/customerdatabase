@@ -13,7 +13,7 @@ while True:
         address=input("Customer Address:-")
         contact=input("Contact Number:-")
         
-        with open("sejal.txt","a") as file:
+        with open("test.txt","a") as file:
             file.write(cid+"\t")
             file.write(name+"\t")
             file.write(address+"\t")
@@ -22,9 +22,9 @@ while True:
 
     def delete():
         i=input("Enter the ID to Remove from File:-")
-        with open("sejal.txt","r") as f:
+        with open("test.txt","r") as f:
             all=f.readlines()
-        with open("sejal.txt","w") as f:
+        with open("test.txt","w") as f:
             for data in all:
                 d=data.split("\t",1)
                 if(d[0]!=i):
@@ -35,7 +35,7 @@ while True:
 
         
     def show():
-        file=open("sejal.txt","r")
+        file=open("test.txt","r")
         print("ID\t Name \t Address \t Contact Number")
         content=file.read()
         print(content)
@@ -43,7 +43,7 @@ while True:
         
     def search():
         i=input("Enter the ID to Search from the File:- ")
-        with open("sejal.txt","r") as file:
+        with open("test.txt","r") as file:
             all=file.readlines()
             for data in all:
                 d=data.split("\t",1)
@@ -51,9 +51,9 @@ while True:
                     print(data)
     def update():
         i=input("Enter the ID to be Updated from File")
-        with open("sejal.txt") as file:
+        with open("test.txt") as file:
             all=file.readlines()
-        with open("sejal.txt","w") as file:
+        with open("test.txt","w") as file:
             for data in all:
                 d=data.split("\t",1)
                 if(d[0]==i):
@@ -81,4 +81,3 @@ while True:
     if ch==6:
         print("Operation Ended")
         break
-    
